@@ -1,10 +1,12 @@
-// 1:22 break
+// 1:22 before break
+// 36 more minutes to complete MVP
+// ~ 2 hours unfocused to complete MVP
 
 // DOM elements
 const inputsElement = document.querySelector("#input-list");
 const currentGoals = document.querySelector(".current-goals");
 const totalCountSpan = document.querySelector(".total-count");
-const completedCountSpan = document.querySelector(".completed-count");
+const completedCountSpan = document.querySelector("#completed-count");
 const percentSpan = document.querySelector(".percent");
 
 // root element for event bubbling on dynamically added elements
@@ -80,21 +82,27 @@ function updateColors() {
   switch (true) {
     case percent >= 80:
       percentSpan.className = "eighty";
+      completedCountSpan.className = "eighty";
       break;
     case percent >= 70:
       percentSpan.className = "seventy";
+      completedCountSpan.className = "seventy";
       break;
     case percent >= 50:
       percentSpan.className = "half";
+      completedCountSpan.className = "half";
       break;
     case percent >= 33:
       percentSpan.className = "third";
+      completedCountSpan.className = "third";
       break;
     case percent > 0:
       percentSpan.className = "began";
+      completedCountSpan.className = "began";
       break;
     default:
       percentSpan.className = "none";
+      completedCountSpan.className = "none";
       break;
   }
 }

@@ -100,3 +100,6 @@ h1 {
      text-decoration: line-through;
      color:azure;
 }
+#item {
+     font-size: calc(2rem + 2vmin);
+}
