@@ -1,16 +1,26 @@
-# My Awesome Project
+# 80 Percent Rule
 
-Write a short sentence or two about this project and what it does. Be sure to include a link and a screenshot (we're front end devs so we can actually see our work!).
+Aiming to accomplish 80 percent of your goals in a day is a great way to make consistent progress. Giving yourself the option to choose which tasks to complete helps on those low energy days.
 
-**Link to project:** http://recruiters-love-seeing-live-demos.com/
+This simple app makes it easier.
+
+[Short demonstration clip](example.mkv)
+
+List your goals for the day, and click to check one off. The app does the math for you, and you recieve a satisfying visual of your progress.
+
+**Link to project:** https://80percentrule.netlify.app/
 
 ![alt tag](http://placecorgi.com/1200/650)
 
 ## How It's Made:
 
-**Tech used:** HTML, CSS, JavaScript, Framework of choice
+**Tech used:** HTML, CSS, JavaScript
 
-Here's where you can go to town on how you actually built this thing. Write as much as you can here, it's totally fine if it's not too much just make sure you write _something_. If you don't have too much experience on your resume working on the front end that's totally fine. This is where you can really show off your passion and make up for that ten fold.
+This app is made to be simple and useful. As a static app, the front end is structured with semantic HTML, styled with CSS, and updated with JavaScript.
+
+JavaScript is used to parse the input string, convert it into list items, and then dynamically render those items as DOM elements. Since these tasks are dynamically rendered and need to be interactable, event listeners are created by using event bubbling on the containing section.
+
+The script tracks state (number of items, how many are marked complete, etc) and calculated the percentage of completed items. Using this information, the script updates which classes are applied to certain elements so the user gets a visual feedback of their progress. The visuals are colors selected based on percentage thresholds (Grey for 0, brown for beginning, orange for 33%+, yellow 50%+, blue 70%+, and green 80%+)
 
 ## Optimizations
 

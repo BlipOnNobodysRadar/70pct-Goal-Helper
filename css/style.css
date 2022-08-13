@@ -91,10 +91,10 @@ h1 {
      color: yellow;
 }
 .seventy {
-     color:aqua;
+     color:rgb(0, 238, 255);
 }
 .eighty {
-     color:aquamarine;
+     color:rgb(0, 255, 106);
 }
 .complete {
      text-decoration: line-through;
