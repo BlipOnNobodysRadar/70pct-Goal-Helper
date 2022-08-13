@@ -22,16 +22,50 @@
 /*******************************************/
 
 body {
-
+     display: flex;
+     flex-flow: row wrap;
+     justify-content: center;
+     font-size: calc(0.75rem + 1vmin);
 }
 
 
 /******************************************
 /* LAYOUT
 /*******************************************/
-
+h1 {
+     text-align: center;
+     border: 1px solid blue;
+}
+.flex-container {
+     border: 1px solid green;
+     display: flex;
+     flex-flow: row wrap;
+     
+}
 
 
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+h1 {
+     color:aquamarine;
+}
+
+.none {
+     color:lightgray;
+}
+.began {
+     color: brown;
+}
+.third {
+     color: rgb(255, 140, 0)';
+}
+.half {
+     color: yellow;
+}
+.seventy {
+     color:aqua;
+}
+.eighty {
+     color:aquamarine;
+}
