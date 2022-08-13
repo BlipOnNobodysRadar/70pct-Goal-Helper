@@ -43,7 +43,23 @@ h1 {
 }
 .current-goals {
      display: flex;
+     list-style: none;
+     flex-flow: row wrap;
+     width: 100%;
+     min-height: 20vh;
+     font-size: calc(1.25rem + 1vmin);
+     justify-content: center;
+     align-items: center;
+     align-content: flex-start;
 }
+li {
+     margin: 1rem;
+     border: 1px solid purple;
+}
+li:hover {
+     transform: scale(1.25);
+}
+
 
 
 /******************************************
