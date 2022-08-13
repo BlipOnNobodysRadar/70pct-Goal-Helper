@@ -4,7 +4,7 @@ Aiming to accomplish 80 percent of your goals in a day is a great way to make co
 
 This simple app makes it easier.
 
-[Short demonstration clip](example.mp4)
+![Short demonstration clip](example.mp4)
 
 List your goals for the day, and click to check one off. The app does the math for you, and you recieve a satisfying visual of your progress.
 
