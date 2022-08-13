@@ -1,7 +1,3 @@
-// 1:22 before break
-// 36 more minutes to complete MVP
-// ~ 2 hours unfocused to complete MVP
-
 // DOM elements
 const inputsElement = document.querySelector("#input-list");
 const currentGoals = document.querySelector(".current-goals");
@@ -77,8 +73,6 @@ function updatePercent() {
 
 // updates colors depending on percentages
 function updateColors() {
-  console.log(percent);
-  console.log(percent > 0);
   switch (true) {
     case percent >= 80:
       percentSpan.className = "eighty";
