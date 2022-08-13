@@ -35,6 +35,15 @@ h1 {
      border: 1px solid blue;
      flex-basis: 100%;
 }
+h2 {
+     flex-basis: 100%;
+     text-align: center;
+     margin-top: 0.5rem;
+}
+h3 {
+     flex-basis: 100%;
+     text-align: center;
+}
 .flex-container {
      border: 1px solid green;
      display: flex;

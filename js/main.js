@@ -12,6 +12,7 @@ inputsElement.addEventListener("keyup", (e) => {
     newElements.forEach((input) => {
       currentGoals.innerHTML += input;
     });
+    inputsElement.value = "";
   }
 });
 
