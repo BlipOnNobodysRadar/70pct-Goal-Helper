@@ -1,3 +1,5 @@
+// 1:22 break
+
 // DOM elements
 const inputsElement = document.querySelector("#input-list");
 const currentGoals = document.querySelector(".current-goals");
@@ -8,7 +10,9 @@ const percentSpan = document.querySelector(".percent");
 // root element for event bubbling on dynamically added elements
 const rootElement = document.querySelector("section");
 rootElement.addEventListener("click", (e) => {
-  markComplete(e.target);
+  if (e.target.id === "item") {
+    markComplete(e.target);
+  }
 });
 
 // vars
