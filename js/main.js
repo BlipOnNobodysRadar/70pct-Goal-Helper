@@ -1,14 +1,19 @@
 const inputsElement = document.querySelector("#input-list");
+const currentGoals = document.querySelector(".current-goals");
+
+let completion = "none";
+const inputsArr = [];
 
 inputsElement.addEventListener("keyup", (e) => {
   if (e.key === "Enter" || e.keyCode === 13) {
-    // do stuff
+    const inputsStr = inputsElement.value;
+    const newElements = parseStr(str);
+    inputsArr.concat(newElements);
+    newElements.forEach((input) => {
+      currentGoals.innerHTML += input;
+    });
   }
 });
-
-const inputsArr = [];
-let inputsStr = inputsElement.value;
-let completion = "none";
 
 function parseStr(str) {
   str = str.trim();
