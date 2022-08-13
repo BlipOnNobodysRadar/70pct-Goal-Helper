@@ -32,7 +32,6 @@ body {
 /*******************************************/
 h1 {
      text-align: center;
-     border: 1px solid blue;
      flex-basis: 100%;
 }
 h2 {
@@ -45,7 +44,6 @@ h3 {
      text-align: center;
 }
 .flex-container {
-     border: 1px solid green;
      display: flex;
      flex-flow: row wrap;
      justify-content: center;
@@ -63,7 +61,6 @@ h3 {
 }
 li {
      margin: 1rem;
-     border: 1px solid purple;
 }
 li:hover {
      transform: scale(1.25);
@@ -75,9 +72,12 @@ li:hover {
 /* ADDITIONAL STYLES
 /*******************************************/
 h1 {
-     color:aquamarine;
+     color: azure;
+     font-style: italic;
 }
-
+.rule {
+     font-style: normal;
+}
 .none {
      color:lightgray;
 }
@@ -85,7 +85,7 @@ h1 {
      color: brown;
 }
 .third {
-     color: rgb(255, 140, 0)';
+     color: rgb(255, 140, 0);
 }
 .half {
      color: yellow;

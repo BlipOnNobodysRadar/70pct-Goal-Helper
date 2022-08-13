@@ -19,7 +19,11 @@ rootElement.addEventListener("click", (e) => {
 let completion = "none";
 let completeCount = 0;
 let totalCount = 0;
-const inputsArr = [];
+let inputsArr = [];
+let percent = 0;
+
+// here for future use of localstorage
+updateColors();
 
 // input handler
 inputsElement.addEventListener("keyup", (e) => {
@@ -28,15 +32,16 @@ inputsElement.addEventListener("keyup", (e) => {
     const inputsStr = inputsElement.value;
     const newElements = parseStr(inputsStr);
     // add the new inputs to the array storing all the goals, and update the DOM.
-    inputsArr.concat(newElements);
+    inputsArr = inputsArr.concat(newElements);
     newElements.forEach((input) => {
       currentGoals.innerHTML += input;
     });
     inputsElement.value = "";
     // take account of the totals, update the DOM
-    totalCount += inputsArr.length;
+    totalCount += newElements.length;
     totalCountSpan.innerHTML = totalCount;
-    percentSpan.innerHTML = ((completeCount / totalCount) * 100).toFixed(2);
+    updatePercent();
+    updateColors();
   }
 });
 
@@ -58,4 +63,38 @@ function markComplete(element) {
   }
   element.classList.toggle("complete");
   completedCountSpan.innerHTML = completeCount;
+  updatePercent();
+  updateColors();
+}
+
+// updates percentages
+function updatePercent() {
+  percent = (completeCount / totalCount) * 100;
+  percentSpan.innerHTML = percent.toFixed(2) + "%";
+}
+
+// updates colors depending on percentages
+function updateColors() {
+  console.log(percent);
+  console.log(percent > 0);
+  switch (true) {
+    case percent >= 80:
+      percentSpan.className = "eighty";
+      break;
+    case percent >= 70:
+      percentSpan.className = "seventy";
+      break;
+    case percent >= 50:
+      percentSpan.className = "half";
+      break;
+    case percent >= 33:
+      percentSpan.className = "third";
+      break;
+    case percent > 0:
+      percentSpan.className = "began";
+      break;
+    default:
+      percentSpan.className = "none";
+      break;
+  }
 }
