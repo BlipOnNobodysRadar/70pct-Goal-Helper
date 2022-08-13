@@ -96,3 +96,7 @@ h1 {
 .eighty {
      color:aquamarine;
 }
+.complete {
+     text-decoration: line-through;
+     color:azure;
+}
