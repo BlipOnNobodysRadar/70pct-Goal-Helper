@@ -24,14 +24,19 @@ const inputsArr = [];
 // input handler
 inputsElement.addEventListener("keyup", (e) => {
   if (e.key === "Enter" || e.keyCode === 13) {
+    // take input string, parse it into HTML-formatted list elements (stored as string elements in an array)
     const inputsStr = inputsElement.value;
     const newElements = parseStr(inputsStr);
+    // add the new inputs to the array storing all the goals, and update the DOM.
     inputsArr.concat(newElements);
     newElements.forEach((input) => {
       currentGoals.innerHTML += input;
     });
     inputsElement.value = "";
+    // take account of the totals, update the DOM
     totalCount += inputsArr.length;
+    totalCountSpan.innerHTML = totalCount;
+    percentSpan.innerHTML = ((completeCount / totalCount) * 100).toFixed(2);
   }
 });
 
