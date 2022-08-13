@@ -5,7 +5,7 @@ const totalCountSpan = document.querySelector(".total-count");
 const completedCountSpan = document.querySelector("#completed-count");
 const percentSpan = document.querySelector(".percent");
 
-// root element for event bubbling on dynamically added elements
+// root element for event capturing on dynamically added elements
 const rootElement = document.querySelector("section");
 rootElement.addEventListener("click", (e) => {
   if (e.target.id === "item") {

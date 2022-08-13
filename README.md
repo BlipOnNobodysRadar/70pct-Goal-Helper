@@ -31,5 +31,5 @@ Since this an MVP version, many optimizations are planned.
 ## Lessons Learned:
 
 - Preventing forms from automatically refreshing the page on submit
-- Using event bubbling for adding event listeners to dynamically rendered DOM elements
+- Using event bubbling/capturing for adding event listeners to dynamically rendered DOM elements
 - Be generous with simple, descriptively-named helper functions to form clean and readable code
