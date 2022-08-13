@@ -22,10 +22,8 @@
 /*******************************************/
 
 body {
-     display: flex;
-     flex-flow: row wrap;
-     justify-content: center;
      font-size: calc(0.75rem + 1vmin);
+     background-color:rgb(94, 100, 106);
 }
 
 
@@ -35,12 +33,16 @@ body {
 h1 {
      text-align: center;
      border: 1px solid blue;
+     flex-basis: 100%;
 }
 .flex-container {
      border: 1px solid green;
      display: flex;
      flex-flow: row wrap;
-     
+     justify-content: center;
+}
+.current-goals {
+     display: flex;
 }
 
 

@@ -7,7 +7,7 @@ const inputsArr = [];
 inputsElement.addEventListener("keyup", (e) => {
   if (e.key === "Enter" || e.keyCode === 13) {
     const inputsStr = inputsElement.value;
-    const newElements = parseStr(str);
+    const newElements = parseStr(inputsStr);
     inputsArr.concat(newElements);
     newElements.forEach((input) => {
       currentGoals.innerHTML += input;
