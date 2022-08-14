@@ -1,6 +1,6 @@
-# 80 Percent Rule
+# 70 Percent Rule
 
-Aiming to accomplish 80 percent of your goals in a day is a great way to make consistent progress. Giving yourself the option to choose which tasks to complete helps on those low energy days.
+Aiming to accomplish at least 70 percent of your goals in a day is a great way to make consistent progress. Giving yourself the option to choose which tasks to complete helps on those low energy days.
 
 This simple app makes it easier.
 
