@@ -12,48 +12,66 @@ rootElement.addEventListener("click", (e) => {
     markComplete(e.target);
   }
 });
+// reset: just store state as an object, convert to JSON for store in localstorage and back when retrieving
 
-// vars
-let completion = "none";
+// default vars
 let completeCount = 0;
 let totalCount = 0;
-let inputsArr = [];
+let tasksArr = [];
 let percent = 0;
+let state = {
+  completeCount: completeCount,
+  totalCount: totalCount,
+  tasksArr: tasksArr,
+  percent: percent,
+};
 
-// here for future use of localstorage
-updateColors();
+// run on page load
+getLocalStorageVals();
+updateTasksAndRender(tasksArr);
 
 // input handler
 inputsElement.addEventListener("keyup", (e) => {
   if (e.key === "Enter" || e.keyCode === 13) {
-    // take input string, parse it into HTML-formatted list elements (stored as string elements in an array)
-    const inputsStr = inputsElement.value;
-    const newElements = parseStr(inputsStr);
-    // add the new inputs to the array storing all the goals, and update the DOM.
-    inputsArr = inputsArr.concat(newElements);
-    newElements.forEach((input) => {
-      currentGoals.innerHTML += input;
-    });
-    inputsElement.value = "";
-    // take account of the totals, update the DOM
-    totalCount += newElements.length;
-    totalCountSpan.innerHTML = totalCount;
-    updatePercent();
-    updateColors();
+    const newElementsArray = inputStringToElements(inputsElement.value);
+    updateTasksAndRender(newElementsArray);
   }
 });
 
+/* -----HELPER FUNCTIONS----- */
+
+// function to abstract update and render process
+function updateTasksAndRender(newElementsArray) {
+  console.log(newElementsArray);
+
+  // add new tasks and update html
+  tasksArr = tasksArr.concat(newElementsArray);
+  newElementsArray.forEach((input) => {
+    currentGoals.innerHTML += input;
+  });
+  // set input element to empty again
+  inputsElement.value = "";
+  // update total count
+  totalCount += newElementsArray.length;
+  completedCountSpan.innerHTML = completeCount;
+  totalCountSpan.innerHTML = totalCount;
+  updatePercent();
+  updateColors();
+  updateState();
+}
 // helper function to parse input strings into DOM elements
-function parseStr(str) {
+function inputStringToElements(str) {
   str = str.trim();
   strArr = str
     .split(",")
     .map((substr) => `<li id="item">${substr.trim()}</li>`);
   return strArr;
 }
-
 // helper function to mark items complete or incomplete
 function markComplete(element) {
+  // need to update local storage of item so it renders as marked or unmarked correctly
+  // need a flag on each element in local storage as to whether it is marked complete or not
+  // need to change presentation based on that completeness
   if (!element.classList.contains("complete")) {
     completeCount++;
   } else {
@@ -67,10 +85,9 @@ function markComplete(element) {
 
 // updates percentages
 function updatePercent() {
-  percent = (completeCount / totalCount) * 100;
+  percent = totalCount > 0 ? (completeCount / totalCount) * 100 : 0;
   percentSpan.innerHTML = percent.toFixed(2) + "%";
 }
-
 // updates colors depending on percentages
 function updateColors() {
   switch (true) {
@@ -99,4 +116,22 @@ function updateColors() {
       completedCountSpan.className = "none";
       break;
   }
+}
+// checks localstorage for state and updates vars to match localstorage if so
+function getLocalStorageVals() {
+  console.log("Me running.");
+  if (localStorage.getItem("state")) {
+    console.log("Me find state in local storage.");
+    state = JSON.parse(localStorage.getItem("state"));
+    percent = state.percent;
+    tasksArr = state.tasksArr;
+    completeCount = state.completeCount;
+  }
+}
+// name pretty much summarizes it
+function updateState() {
+  state.percent = percent;
+  state.tasksArr = tasksArr;
+  state.completeCount = completeCount;
+  localStorage.setItem("state", JSON.stringify(state));
 }
