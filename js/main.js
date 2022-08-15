@@ -1,9 +1,21 @@
+//TODO
+/*
+ Make each new element as an object. One property of the element's HTML, the other a flag of isComplete.
+ Currently on being marked isComplete, toggles class on that element
+ els in array just stored as html strings
+
+ way to get all children of parent element? could just do that and store in state
+
+ redo element creation properly. document.createElement
+*/
+
 // DOM elements
 const inputsElement = document.querySelector("#input-list");
-const currentGoals = document.querySelector(".current-goals");
+const tasksList = document.querySelector(".current-goals");
 const totalCountSpan = document.querySelector(".total-count");
 const completedCountSpan = document.querySelector("#completed-count");
 const percentSpan = document.querySelector(".percent");
+const clearButton = document.querySelector("button");
 
 // root element for event capturing on dynamically added elements
 const rootElement = document.querySelector("section");
@@ -28,7 +40,7 @@ let state = {
 
 // run on page load
 getLocalStorageVals();
-updateTasksAndRender(tasksArr);
+updateTasksAndRender(tasksArr, true);
 
 // input handler
 inputsElement.addEventListener("keyup", (e) => {
@@ -38,16 +50,39 @@ inputsElement.addEventListener("keyup", (e) => {
   }
 });
 
+// clear button
+clearButton.addEventListener("click", (e) => {
+  tasksList.innerHTML = "";
+  completeCount = 0;
+  totalCount = 0;
+  tasksArr = [];
+  percent = percent;
+  updateState();
+  updateTasksAndRender(tasksArr, true);
+  localStorage.clear();
+});
+
 /* -----HELPER FUNCTIONS----- */
+// checks localstorage for state and updates vars to match localstorage if found
+function getLocalStorageVals() {
+  if (localStorage.getItem("state")) {
+    state = JSON.parse(localStorage.getItem("state"));
+    percent = state.percent;
+    tasksArr = state.tasksArr;
+    completeCount = state.completeCount;
+  }
+}
 
 // function to abstract update and render process
-function updateTasksAndRender(newElementsArray) {
+function updateTasksAndRender(newElementsArray, localStorage = false) {
   console.log(newElementsArray);
 
   // add new tasks and update html
-  tasksArr = tasksArr.concat(newElementsArray);
+  if (!localStorage) {
+    tasksArr = tasksArr.concat(newElementsArray);
+  }
   newElementsArray.forEach((input) => {
-    currentGoals.innerHTML += input;
+    tasksList.innerHTML += input;
   });
   // set input element to empty again
   inputsElement.value = "";
@@ -81,6 +116,7 @@ function markComplete(element) {
   completedCountSpan.innerHTML = completeCount;
   updatePercent();
   updateColors();
+  // updateState(); need completion stored in state
 }
 
 // updates percentages
@@ -115,17 +151,6 @@ function updateColors() {
       percentSpan.className = "none";
       completedCountSpan.className = "none";
       break;
-  }
-}
-// checks localstorage for state and updates vars to match localstorage if so
-function getLocalStorageVals() {
-  console.log("Me running.");
-  if (localStorage.getItem("state")) {
-    console.log("Me find state in local storage.");
-    state = JSON.parse(localStorage.getItem("state"));
-    percent = state.percent;
-    tasksArr = state.tasksArr;
-    completeCount = state.completeCount;
   }
 }
 // name pretty much summarizes it
