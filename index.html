@@ -19,9 +19,11 @@
 			<section class="flex-container card-panel bg">
 				<h3>Progress: <span class="percent">0.00%</span></h3>
 				<p>Completed <span id="completed-count">0</span> out of <span class="total-count">0</span></p>
-				<button class="btn">Clear Goals</button>
-				<ul class="current-goals card-panel bg2">
-				</ul>
+				<div class="flex-container goals">
+					<button class="btn">Clear Goals</button>
+					<ul class="current-goals card-panel bg2">
+					</ul>
+				</div>
 				<form onsubmit="return false">
 					<label for="input-list">Add Goals (comma seperated):
 						<input type="text" name="input-list" id="input-list">

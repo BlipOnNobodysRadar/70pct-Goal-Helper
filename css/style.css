@@ -75,9 +75,12 @@ h3 {
      justify-content: center;
      align-items: flex-start;
 }
+.goals {
+     flex-basis: 100%;
+     margin:0;
+}
 button {
      margin: 0 12%;
-     min-width: 50%;
      border-radius: 20% 20% 0% 0%;
      flex: 1 1 100%;
 }
@@ -131,10 +134,10 @@ label {
      border: 1px solid #E7F6F2;
 }
 .bg2 {
-     background-color: #212121;
+     background-color: black;
      margin: 0 5%;
      color:azure;
-     border: 5vmin solid #585757;
+     border: 1vmin solid #585757;
      border-right: 1vmin solid #212121;
      border-left: 1vmin solid #212121;
 }
@@ -157,9 +160,9 @@ label {
      color:#00e676;
 }
 .eighty {
-     color:#311b92;
+     color:navajowhite;
 }
 .complete {
      text-decoration: line-through;
-     color: tan;
+     color:goldenrod;
 }
