@@ -31,9 +31,14 @@ body {
 /******************************************
 /* LAYOUT
 /*******************************************/
+header {
+     margin: 2% 10%;
+}
 h1 {
      text-align: center;
      flex-basis: 100%;
+     margin: 0%;
+     padding: 2%;
 }
 h2 {
      flex-basis: 100%;
@@ -70,13 +75,18 @@ li:hover {
 }
 .item {
      font-size: calc(1.5rem + 2vmin);
-     color:#E7F6F2;
 }
 
 
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+header {
+     border: 1px solid #E7F6F2;
+     margin-bottom: 0%;
+     border-radius: 10% 10% 0% 0%;
+     border-bottom: none;
+}
 .card {
      background-color: #2C3333;
 }
@@ -87,7 +97,20 @@ label {
      font-size: large;
 }
 .bg {
-     background-color: #395B64
+     background-color: #395B64;
+     margin: 0 10%;
+     border-radius: 0% 0% 10% 10%;
+     border: 1px solid #E7F6F2;
+     border-top: 0.5px dashed #212121;
+}
+.bg2 {
+     background-color: #e8eaea;
+     margin: 0 10%;
+     color:black;
+     border: 3px solid #212121;
+     border-right: 1px solid black;
+     border-left: 1px solid black;
+     border-radius: 5%;
 }
 .rule {
      font-style: normal;
@@ -112,5 +135,5 @@ label {
 }
 .complete {
      text-decoration: line-through;
-     color:black;
+     color:purple;
 }
