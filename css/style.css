@@ -24,6 +24,7 @@
 body {
      background-color: #2C3333;
      color: #E7F6F2;
+     align-items: flex-start;
 }
 
 
@@ -33,13 +34,15 @@ body {
 header {
      margin: 2% 10%;
      min-height: 10vh;
+     background-color: #a1c69b;
+     color: #18090d;
 }
 section {
      min-height: 85vh;
 }
 form {
      width: 100%;
-     margin: 5% 10%;
+     margin: 5%;
      align-self: flex-end;
 
 }
@@ -70,34 +73,37 @@ h3 {
      display: flex;
      flex-flow: row wrap;
      justify-content: center;
-     align-content: flex-start;
+     align-items: flex-start;
 }
 button {
      margin: 0 12%;
      min-width: 50%;
      border-radius: 20% 20% 0% 0%;
-     flex-basis: 100%;
+     flex: 1 1 100%;
 }
 .current-goals {
      display: flex;
      list-style: none;
      flex-flow: row wrap;
+     flex: 3 1 100%;
      width: 100%;
      min-height: 20vh;
-     font-size: calc(1.25rem + 1vmin);
+     font-size: calc(0.75rem + 2vmin);
      justify-content: center;
-     align-items: center;
-     align-content: flex-start;
+     align-items: flex-start;
+     color:azure;
+     gap: 1vmin;
+}
+
+.item {
+     flex: 0 2;
+     margin: 0;
 }
 li {
      margin: 1rem;
 }
 li:hover {
      transform: scale(1.20);
-}
-.item {
-     font-size: calc(1.5rem + 2vmin);
-     color:black;
 }
 
 
@@ -108,6 +114,7 @@ header {
      border: 2px solid #E7F6F2;
      margin-bottom: 0%;
      border-radius: 15% 15% 0% 0%;
+     border-bottom: none;
 }
 .card {
      background-color: #2C3333;
@@ -120,15 +127,14 @@ label {
 }
 .bg {
      background-color: #395B64;
-     margin: 0 10%;
+     margin: 0 5%;
      border-radius: 0% 0% 10% 10%;
      border: 1px solid #E7F6F2;
-     border-top: 0.5px dashed #212121;
 }
 .bg2 {
-     background-color: #939ca9;
-     margin: 0 10%;
-     color:black;
+     background-color: black;
+     margin: 0 5%;
+     color:azure;
      border: 3px solid #212121;
      border-right: 1px solid black;
      border-left: 1px solid black;
@@ -156,5 +162,5 @@ label {
 }
 .complete {
      text-decoration: line-through;
-     color: azure;
+     color: tan;
 }
