@@ -22,8 +22,9 @@
 /*******************************************/
 
 body {
+     background-color: #2C3333;
+     color: #A5C9CA;
      font-size: calc(0.75rem + 1vmin);
-     background-color:rgb(94, 100, 106);
 }
 
 
@@ -37,7 +38,6 @@ h1 {
 h2 {
      flex-basis: 100%;
      text-align: center;
-     margin-top: 0.5rem;
 }
 h3 {
      flex-basis: 100%;
@@ -63,43 +63,54 @@ li {
      margin: 1rem;
 }
 li:hover {
-     transform: scale(1.25);
+     transform: scale(1.15);
+     border-bottom: 1px solid #2C3333;
+     border-top: 1px solid #2C3333;
+     border-radius: 10%;
 }
-
+.item {
+     font-size: calc(1.5rem + 2vmin);
+     color:#E7F6F2;
+}
 
 
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+.card {
+     background-color: #2C3333;
+}
 h1 {
-     color: azure;
      font-style: italic;
+}
+label {
+     font-size: large;
+}
+.bg {
+     background-color: #395B64
 }
 .rule {
      font-style: normal;
 }
 .none {
-     color:lightgray;
+     color: #E7F6F2;
 }
 .began {
-     color: brown;
+     color: #ef5350;
 }
 .third {
-     color: rgb(255, 140, 0);
+     color: #ff9800;
 }
 .half {
-     color: yellow;
+     color: #ffd600;
 }
 .seventy {
-     color:rgb(0, 238, 255);
+     color:#00e676;
 }
 .eighty {
-     color:rgb(0, 255, 106);
+     color:#311b92;
 }
 .complete {
      text-decoration: line-through;
-     color:azure;
-}
-.item {
-     font-size: calc(2rem + 2vmin);
+     color:black;
 }

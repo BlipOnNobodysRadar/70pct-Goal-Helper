@@ -50,6 +50,8 @@ function handleInput(inputString) {
     return task;
   });
   state.tasks = state.tasks.concat(tasks);
+  state.percent =
+    state.totalCount > 0 ? (state.completeCount / state.totalCount) * 100 : 0;
   storeState();
   return tasks;
 }

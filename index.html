@@ -9,24 +9,25 @@
 
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/materialize.min.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<header>
-			<h1><span class="rule">70pct Rule:</span> Accomplish at-least 70% of your goals for the day.</h1>
+			<h1> Accomplish at-least 70% of your goals for the day.</h1>
 		</header>
-			<section class="flex-container">
+			<section class="flex-container card-panel bg">
 				<h2>Current Goals</h2>
-				<h2><span class="percent">0.00%</span></h2>
+				<h4><span class="percent">0.00%</span></h4>
 				<ul class="current-goals">
 				</ul>
 				<h3>Completed <span id="completed-count">0</span> out of <span class="total-count">0</span></h3>
-				<button>Clear Goals</button>
+				<button class="btn">Clear Goals</button>
 			</section>
 
 			<div class="flex-container">
 				<form onsubmit="return false">
-					<label for="input-list">Inputs (comma seperated):
+					<label for="input-list">Add Goals (comma seperated):
 						<input type="text" name="input-list" id="input-list">
 					</label>
 				</form>
