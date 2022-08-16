@@ -92,11 +92,10 @@ button {
      justify-content: center;
      align-items: flex-start;
      color:azure;
-     gap: 1vmin;
+     gap: 4vmin;
 }
 
 .item {
-     flex: 0 2;
      margin: 0;
 }
 li {
@@ -132,12 +131,12 @@ label {
      border: 1px solid #E7F6F2;
 }
 .bg2 {
-     background-color: black;
+     background-color: #212121;
      margin: 0 5%;
      color:azure;
-     border: 3px solid #212121;
-     border-right: 1px solid black;
-     border-left: 1px solid black;
+     border: 5vmin solid #585757;
+     border-right: 1vmin solid #212121;
+     border-left: 1vmin solid #212121;
 }
 .rule {
      font-style: normal;
