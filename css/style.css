@@ -126,7 +126,7 @@ label {
      border-top: 0.5px dashed #212121;
 }
 .bg2 {
-     background-color: #e8eaea;
+     background-color: #939ca9;
      margin: 0 10%;
      color:black;
      border: 3px solid #212121;
@@ -156,5 +156,5 @@ label {
 }
 .complete {
      text-decoration: line-through;
-     color: #311b92;
+     color: azure;
 }
