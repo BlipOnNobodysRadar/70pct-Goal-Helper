@@ -1,14 +1,72 @@
-//TODO
-/*
- Make each new element as an object. One property of the element's HTML, the other a flag of isComplete.
- Currently on being marked isComplete, toggles class on that element
- els in array just stored as html strings
+/*------Controller------*/
+//                            //
+//                           //
+class State {
+  constructor() {
+    this.completeCount = 0;
+    this.totalCount = 0;
+    this.tasks = [];
+    this.percent = 0;
+  }
+}
+// default state
+let state = new State();
+/* -----HELPER FUNCTIONS----- */
+//                            //
+//                           //
 
- way to get all children of parent element? could just do that and store in state
+//class to represent tasks and track completion
+class Task {
+  constructor(taskName, id) {
+    this.taskName = taskName;
+    this.complete = false;
+    this.id = id;
+  }
+}
+// receives DOM element representing a task, and updates the task obj's state to reflect the change
+function updateController(element) {
+  let taskIndex = state.tasks.findIndex(
+    (task) => task.id.toString() === element.id
+  );
+  if (!element.classList.contains("complete")) {
+    state.tasks[taskIndex].complete = true;
+    state.completeCount = state.completeCount + 1;
+  } else {
+    state.tasks[taskIndex].complete = false;
+    state.completeCount = state.completeCount - 1;
+  }
+  state.percent =
+    state.totalCount > 0 ? (state.completeCount / state.totalCount) * 100 : 0;
+  storeState();
+}
 
- redo element creation properly. document.createElement
-*/
+// Converts input string into array of Task objects and updates count.
+function handleInput(inputString) {
+  inputString = inputString.trim();
+  const tasks = inputString.split(",").map((input) => {
+    let id = state.totalCount;
+    state.totalCount = state.totalCount + 1;
+    let task = new Task(input.trim(), id);
+    return task;
+  });
+  state.tasks = state.tasks.concat(tasks);
+  storeState();
+  return tasks;
+}
+// checks localstorage for state and updates vars to match localstorage if found
+function getLocalStorageVals() {
+  if (localStorage.getItem("state")) {
+    state = JSON.parse(localStorage.getItem("state"));
+  }
+}
+// updates state and storage of state
+function storeState() {
+  localStorage.setItem("state", JSON.stringify(state));
+}
 
+/*------UI------*/
+//                 //
+//                 //
 // DOM elements
 const inputsElement = document.querySelector("#input-list");
 const tasksList = document.querySelector(".current-goals");
@@ -19,113 +77,61 @@ const clearButton = document.querySelector("button");
 
 // root element for event capturing on dynamically added elements
 const rootElement = document.querySelector("section");
-rootElement.addEventListener("click", (e) => {
-  if (e.target.id === "item") {
-    markComplete(e.target);
-  }
-});
-// reset: just store state as an object, convert to JSON for store in localstorage and back when retrieving
 
-// default vars
-let completeCount = 0;
-let totalCount = 0;
-let tasksArr = [];
-let percent = 0;
-let state = {
-  completeCount: completeCount,
-  totalCount: totalCount,
-  tasksArr: tasksArr,
-  percent: percent,
-};
+/*------UX------*/
+//                 //
+//                 //
 
-// run on page load
-getLocalStorageVals();
-updateTasksAndRender(tasksArr, true);
-
+/*------Event Handlers------*/
+//                 //
 // input handler
 inputsElement.addEventListener("keyup", (e) => {
   if (e.key === "Enter" || e.keyCode === 13) {
-    const newElementsArray = inputStringToElements(inputsElement.value);
-    updateTasksAndRender(newElementsArray);
+    handleInput(inputsElement.value);
+    renderUI();
+    inputsElement.value = "";
   }
 });
-
-// clear button
+// item handler
+rootElement.addEventListener("click", (e) => {
+  if (e.target.classList.contains("item")) {
+    markComplete(e.target);
+  }
+});
+// clear button handler
 clearButton.addEventListener("click", (e) => {
-  tasksList.innerHTML = "";
-  completeCount = 0;
-  totalCount = 0;
-  tasksArr = [];
-  percent = percent;
-  updateState();
-  updateTasksAndRender(tasksArr, true);
+  clearVisibleTasks();
   localStorage.clear();
+  state = new State();
+  renderUI();
 });
 
 /* -----HELPER FUNCTIONS----- */
-// checks localstorage for state and updates vars to match localstorage if found
-function getLocalStorageVals() {
-  if (localStorage.getItem("state")) {
-    state = JSON.parse(localStorage.getItem("state"));
-    percent = state.percent;
-    tasksArr = state.tasksArr;
-    completeCount = state.completeCount;
-  }
-}
-
-// function to abstract update and render process
-function updateTasksAndRender(newElementsArray, localStorage = false) {
-  console.log(newElementsArray);
-
-  // add new tasks and update html
-  if (!localStorage) {
-    tasksArr = tasksArr.concat(newElementsArray);
-  }
-  newElementsArray.forEach((input) => {
-    tasksList.innerHTML += input;
-  });
-  // set input element to empty again
-  inputsElement.value = "";
-  // update total count
-  totalCount += newElementsArray.length;
-  completedCountSpan.innerHTML = completeCount;
-  totalCountSpan.innerHTML = totalCount;
-  updatePercent();
-  updateColors();
-  updateState();
-}
-// helper function to parse input strings into DOM elements
-function inputStringToElements(str) {
-  str = str.trim();
-  strArr = str
-    .split(",")
-    .map((substr) => `<li id="item">${substr.trim()}</li>`);
-  return strArr;
-}
-// helper function to mark items complete or incomplete
+//                            //
 function markComplete(element) {
-  // need to update local storage of item so it renders as marked or unmarked correctly
-  // need a flag on each element in local storage as to whether it is marked complete or not
-  // need to change presentation based on that completeness
-  if (!element.classList.contains("complete")) {
-    completeCount++;
-  } else {
-    completeCount--;
-  }
-  element.classList.toggle("complete");
-  completedCountSpan.innerHTML = completeCount;
-  updatePercent();
-  updateColors();
-  // updateState(); need completion stored in state
+  updateController(element);
+  renderUI();
 }
-
-// updates percentages
-function updatePercent() {
-  percent = totalCount > 0 ? (completeCount / totalCount) * 100 : 0;
-  percentSpan.innerHTML = percent.toFixed(2) + "%";
+function clearVisibleTasks() {
+  tasksList.innerHTML = "";
+}
+function renderUI() {
+  updateColors(state.percent);
+  percentSpan.textContent = state.percent.toFixed(2) + "%";
+  completedCountSpan.textContent = state.completeCount;
+  totalCountSpan.textContent = state.totalCount;
+  clearVisibleTasks();
+  state.tasks.forEach((task) => {
+    const taskElement = document.createElement("li");
+    taskElement.id = task.id;
+    taskElement.textContent = task.taskName;
+    taskElement.className = "item";
+    if (task.complete) taskElement.classList.toggle("complete");
+    tasksList.append(taskElement);
+  });
 }
 // updates colors depending on percentages
-function updateColors() {
+function updateColors(percent) {
   switch (true) {
     case percent >= 80:
       percentSpan.className = "eighty";
@@ -153,10 +159,7 @@ function updateColors() {
       break;
   }
 }
-// name pretty much summarizes it
-function updateState() {
-  state.percent = percent;
-  state.tasksArr = tasksArr;
-  state.completeCount = completeCount;
-  localStorage.setItem("state", JSON.stringify(state));
-}
+
+/*------Run on Start------*/
+getLocalStorageVals();
+renderUI();
