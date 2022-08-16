@@ -23,8 +23,7 @@
 
 body {
      background-color: #2C3333;
-     color: #A5C9CA;
-     font-size: calc(0.75rem + 1vmin);
+     color: #E7F6F2;
 }
 
 
@@ -33,6 +32,25 @@ body {
 /*******************************************/
 header {
      margin: 2% 10%;
+     min-height: 10vh;
+}
+section {
+     min-height: 85vh;
+}
+form {
+     width: 100%;
+     margin: 5% 10%;
+     align-self: flex-end;
+
+}
+footer {
+     height: 2vh;
+}
+p {
+     margin-top: 0;
+}
+ul {
+     margin-bottom: 0;
 }
 h1 {
      text-align: center;
@@ -52,6 +70,13 @@ h3 {
      display: flex;
      flex-flow: row wrap;
      justify-content: center;
+     align-content: flex-start;
+}
+button {
+     margin: 0 12%;
+     min-width: 50%;
+     border-radius: 20% 20% 0% 0%;
+     flex-basis: 100%;
 }
 .current-goals {
      display: flex;
@@ -68,13 +93,11 @@ li {
      margin: 1rem;
 }
 li:hover {
-     transform: scale(1.15);
-     border-bottom: 1px solid #2C3333;
-     border-top: 1px solid #2C3333;
-     border-radius: 10%;
+     transform: scale(1.20);
 }
 .item {
      font-size: calc(1.5rem + 2vmin);
+     color:black;
 }
 
 
@@ -82,10 +105,9 @@ li:hover {
 /* ADDITIONAL STYLES
 /*******************************************/
 header {
-     border: 1px solid #E7F6F2;
+     border: 2px solid #E7F6F2;
      margin-bottom: 0%;
-     border-radius: 10% 10% 0% 0%;
-     border-bottom: none;
+     border-radius: 15% 15% 0% 0%;
 }
 .card {
      background-color: #2C3333;
@@ -110,7 +132,6 @@ label {
      border: 3px solid #212121;
      border-right: 1px solid black;
      border-left: 1px solid black;
-     border-radius: 5%;
 }
 .rule {
      font-style: normal;
@@ -135,5 +156,5 @@ label {
 }
 .complete {
      text-decoration: line-through;
-     color:purple;
+     color: #311b92;
 }

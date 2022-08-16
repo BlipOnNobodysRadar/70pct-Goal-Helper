@@ -14,24 +14,20 @@
 	</head>
 	<body>
 		<header>
-			<h1> Accomplish at-least 70% of your goals for the day.</h1>
+			<h1> 70% Rule Tracker</h1>
 		</header>
 			<section class="flex-container card-panel bg">
-				<h2>Current Goals</h2>
-				<h4><span class="percent">0.00%</span></h4>
+				<h3>Progress: <span class="percent">0.00%</span></h3>
+				<p>Completed <span id="completed-count">0</span> out of <span class="total-count">0</span></p>
+				<button class="btn">Clear Goals</button>
 				<ul class="current-goals card-panel bg2">
 				</ul>
-				<h3>Completed <span id="completed-count">0</span> out of <span class="total-count">0</span></h3>
-				<button class="btn">Clear Goals</button>
-			</section>
-
-			<div class="flex-container">
 				<form onsubmit="return false">
 					<label for="input-list">Add Goals (comma seperated):
 						<input type="text" name="input-list" id="input-list">
 					</label>
 				</form>
-			</div>
+			</section>
 		<footer>
 		</footer>
 
