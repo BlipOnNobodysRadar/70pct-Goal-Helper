@@ -33,18 +33,21 @@ body {
 /*******************************************/
 header {
      margin: 2% 10%;
-     min-height: 10vh;
+     min-height: 5vh;
      background-color: #a1c69b;
      color: #18090d;
 }
 section {
-     min-height: 85vh;
+     min-height: 60vh;
 }
 form {
      width: 100%;
-     margin: 5%;
-     align-self: flex-end;
-
+     margin: 1% 5%;
+     color: #E7F6F2;
+}
+label {
+     color: #E7F6F2;
+     justify-self: center;
 }
 footer {
      height: 2vh;
@@ -81,7 +84,6 @@ h3 {
 }
 button {
      margin: 0 12%;
-     border-radius: 20% 20% 0% 0%;
      flex: 1 1 100%;
 }
 .current-goals {
@@ -90,7 +92,7 @@ button {
      flex-flow: row wrap;
      flex: 3 1 100%;
      width: 100%;
-     min-height: 20vh;
+     min-height: 25%;
      font-size: calc(0.75rem + 2vmin);
      justify-content: center;
      align-items: flex-start;
@@ -113,10 +115,11 @@ li:hover {
 /* ADDITIONAL STYLES
 /*******************************************/
 header {
-     border: 2px solid #E7F6F2;
+     /* border: 2px solid #E7F6F2; */
      margin-bottom: 0%;
      border-radius: 15% 15% 0% 0%;
-     border-bottom: none;
+     border: none;
+     border-bottom: 6px outset black;
 }
 .card {
      background-color: #2C3333;
@@ -131,13 +134,14 @@ label {
      background-color: #395B64;
      margin: 0 5%;
      border-radius: 0% 0% 10% 10%;
-     border: 1px solid #E7F6F2;
+     /* border: 1px solid #E7F6F2; */
+     border: none;
 }
 .bg2 {
      background-color: black;
      margin: 0 5%;
      color:azure;
-     border: 1vmin solid #585757;
+     border: 1vmin inset #585757;
      border-right: 1vmin solid #212121;
      border-left: 1vmin solid #212121;
 }
