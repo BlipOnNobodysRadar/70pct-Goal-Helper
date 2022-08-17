@@ -49,6 +49,9 @@ label {
      color: #E7F6F2;
      justify-self: center;
 }
+input {
+     color: #E7F6F2;
+}
 footer {
      height: 2vh;
 }
